@@ -1,21 +1,22 @@
 "use strict";
+
 // starting scores
 
 let playerScore = 0;
 let computerScore = 0;
 
 function gameRound() {
-    let playerInput = getPlayerInput(); // function because I wanted to request input again if the player's input is incorrect.
+    let playerInput = getPlayerChoice(); // I used function because I wanted to request input again in case of unexpected input.
 
     let computerInput = getComputerChoice([1, 2, 3]); // 1 is rocks, 2 is paper, 3 is scissors
 
     // functions for inputs
 
-    function getPlayerInput() {
+    function getPlayerChoice() {
         let playerInput = prompt(`Rock, paper or scissors?`).toLowerCase();
         if (!(playerInput === 'rock' || playerInput === 'paper' || playerInput === 'scissors')) {
             playerInput = alert(`Wrong input!`);
-            getPlayerInput();
+            getPlayerChoice();
         } else {
             return playerInput;
         }
@@ -35,7 +36,7 @@ function gameRound() {
         return ++computerScore;
     } else {
         alert(`It's a draw!`)
-        gameRound(playerInput, computerInput);
+        gameRound();
     }
 }
 
