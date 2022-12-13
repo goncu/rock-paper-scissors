@@ -40,29 +40,38 @@ function gameRound() {
     }
 }
 
-gameRound();
-alert(`The score is:
-You: ${playerScore}
-Computer: ${computerScore}`);
+for (let i = 1; i <= 5; i++) {
+    gameRound();
+    alert(`The score is:
+    You: ${playerScore}
+    Computer: ${computerScore}`);
+}
 
-gameRound();
-alert(`The score is:
-You: ${playerScore}
-Computer: ${computerScore}`);
+alert(playerScore > computerScore ? 'YOU WIN!!!' : 'YOU LOSE :(');
 
-gameRound();
-alert(`The score is:
-You: ${playerScore}
-Computer: ${computerScore}`);
+// gameRound();
+// alert(`The score is:
+// You: ${playerScore}
+// Computer: ${computerScore}`);
 
-gameRound();
-alert(`The score is:
-You: ${playerScore}
-Computer: ${computerScore}`);
+// gameRound();
+// alert(`The score is:
+// You: ${playerScore}
+// Computer: ${computerScore}`);
 
-gameRound();
-alert(`The final score is:
-You: ${playerScore}
-Computer: ${computerScore}
-${playerScore > computerScore ? 'YOU WIN!!!' : 'YOU LOSE :('}`);
+// gameRound();
+// alert(`The score is:
+// You: ${playerScore}
+// Computer: ${computerScore}`);
+
+// gameRound();
+// alert(`The score is:
+// You: ${playerScore}
+// Computer: ${computerScore}`);
+
+// gameRound();
+// alert(`The final score is:
+// You: ${playerScore}
+// Computer: ${computerScore}
+// ${playerScore > computerScore ? 'YOU WIN!!!' : 'YOU LOSE :('}`);
 
