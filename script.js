@@ -1,107 +1,107 @@
-"use strict";
-
-// starting scores
-
-let playerScore = 0;
-let computerScore = 0;
-
-function gameRound() {
-  let playerInput = getPlayerChoice(); // I used function because I wanted to request input again in case of unexpected input.
-
-  let computerInput = getComputerChoice([1, 2, 3]); // 1 is rocks, 2 is paper, 3 is scissors
-
-  // functions for inputs
-
-  function getPlayerChoice() {
-    let playerInput = prompt(`Rock, paper or scissors?`).toLowerCase();
-    if (
-      !(
-        playerInput === "rock" ||
-        playerInput === "paper" ||
-        playerInput === "scissors"
-      )
-    ) {
-      playerInput = alert(`Wrong input!`);
-      getPlayerChoice();
-    } else {
-      return playerInput;
+const introScreen = document.querySelector(`.intro-screen`);
+const gameScreen = document.querySelector(`.game-screen`);
+const startButton = document.querySelector(`.btn-start`);
+const roundResult = document.querySelector(`.round-result`);
+const roundResultText = document.querySelector(`.round-result-text`);
+const finalResult = document.querySelector(`.final-result`);
+const endScreen = document.querySelector(`.end-screen`);
+const okButton = document.querySelector(`.btn-ok`);
+const playAgain = document.querySelector(`.btn-again`);
+const player0Scoreel = document.querySelector(`.player0-score`);
+const player1Scoreel = document.querySelector(`.player1-score`);
+let player0Score = 0;
+let player1Score = 0;
+let player0Choice, player1Choice;
+let roundPlayed = false; // This line is in order to make buttons non-functional after a round is played.
+// Below code block is for the function of start button and initializing the game.
+startButton.addEventListener(`click`, () => {
+  introScreen.classList.add(`hidden`);
+  gameScreen.classList.remove(`hidden`);
+});
+// Below code block is for game logic. For loop is for applying it to all 3 buttons.
+// 0 = rock, 1 = paper, 2 = scissors
+for (let i = 0; i < 3; i++) {
+  document.querySelector(`.btn-${i}`).addEventListener(`click`, function () {
+    if (!roundPlayed) {
+      okButton.classList.remove(`hidden`); // OK button is not shown in case of a draw. This line is removing the hidden class from it.
+      roundResult.classList.remove(`hidden`);
+      roundPlayed = true;
+      player0Choice = i;
+      player1Choice = Math.trunc(Math.random() * 3);
+      // Below if conditional is for deciding who wins the round.
+      if (
+        (player0Choice === 0 && player1Choice === 2) ||
+        (player0Choice === 1 && player1Choice === 0) ||
+        (player0Choice === 2 && player1Choice === 1)
+      ) {
+        player0Score++;
+        roundResultText.textContent = `You won! You chose ${
+          player0Choice === 0
+            ? `rock`
+            : player0Choice === 1
+            ? `paper`
+            : `scissors`
+        } and the computer chose ${
+          player1Choice === 0
+            ? `rock`
+            : player1Choice === 1
+            ? `paper`
+            : `scissors`
+        }. Press OK to continue.`;
+      } else if (
+        (player1Choice === 0 && player0Choice === 2) ||
+        (player1Choice === 1 && player0Choice === 0) ||
+        (player1Choice === 2 && player0Choice === 1)
+      ) {
+        player1Score++;
+        roundResultText.textContent = `You lost! You chose ${
+          player0Choice === 0
+            ? `rock`
+            : player0Choice === 1
+            ? `paper`
+            : `scissors`
+        }, but the computer chose ${
+          player1Choice === 0
+            ? `rock`
+            : player1Choice === 1
+            ? `paper`
+            : `scissors`
+        }. Press OK to continue.`;
+      } else if (player0Choice === player1Choice) {
+        roundResultText.textContent = `It's a draw! Choose again.`;
+        okButton.classList.add(`hidden`);
+        roundPlayed = false;
+      }
+      player0Scoreel.textContent = player0Score;
+      player1Scoreel.textContent = player1Score;
     }
-  }
-
-  function getComputerChoice(numbers) {
-    return numbers[Math.floor(Math.random() * numbers.length)];
-  }
-
-  //deciding who wins the game and increasing their score accordingly
-
-  if (
-    (playerInput === "rock" && computerInput === 3) ||
-    (playerInput === "paper" && computerInput === 1) ||
-    (playerInput === "scissors" && computerInput === 2)
-  ) {
-    alert(
-      `You win! The computer chose ${
-        computerInput === 1
-          ? "rock"
-          : computerInput === 2
-          ? "paper"
-          : "scissors"
-      }.`
-    );
-    return ++playerScore;
-  } else if (
-    (computerInput === 1 && playerInput === "scissors") ||
-    (computerInput === 2 && playerInput === "rock") ||
-    (computerInput === 3 && playerInput === "paper")
-  ) {
-    alert(
-      `You lose! The computer chose ${
-        computerInput === 1
-          ? "rock"
-          : computerInput === 2
-          ? "paper"
-          : "scissors"
-      }.`
-    );
-    return ++computerScore;
+  });
+}
+// Below code block is for OK button. Winning condition is checked when it is clicked. Otherwise, a new round is played.
+okButton.addEventListener(`click`, function () {
+  if (player0Score === 5) {
+    gameScreen.classList.add(`hidden`);
+    roundResult.classList.add(`hidden`);
+    endScreen.classList.remove(`hidden`);
+    finalResult.textContent = `Congratulations! You won the game!`;
+  } else if (player1Score === 5) {
+    gameScreen.classList.add(`hidden`);
+    roundResult.classList.add(`hidden`);
+    endScreen.classList.remove(`hidden`);
+    finalResult.textContent = `You lost the game!`;
   } else {
-    alert(`It's a draw!`);
-    gameRound();
+    roundPlayed = false;
+    roundResult.classList.add(`hidden`);
   }
-}
+});
 
-for (let i = 1; i <= 5; i++) {
-  if (playerScore === 3 || computerScore === 3) break;
-  gameRound();
-  alert(`The score is:
-    You: ${playerScore}
-    Computer: ${computerScore}`);
-}
-
-alert(playerScore > computerScore ? "YOU WIN!!!" : "YOU LOSE :(");
-
-// gameRound();
-// alert(`The score is:
-// You: ${playerScore}
-// Computer: ${computerScore}`);
-
-// gameRound();
-// alert(`The score is:
-// You: ${playerScore}
-// Computer: ${computerScore}`);
-
-// gameRound();
-// alert(`The score is:
-// You: ${playerScore}
-// Computer: ${computerScore}`);
-
-// gameRound();
-// alert(`The score is:
-// You: ${playerScore}
-// Computer: ${computerScore}`);
-
-// gameRound();
-// alert(`The final score is:
-// You: ${playerScore}
-// Computer: ${computerScore}
-// ${playerScore > computerScore ? 'YOU WIN!!!' : 'YOU LOSE :('}`);
+//Below code is for resetting the conditions and playing the game again.
+playAgain.addEventListener(`click`, function () {
+  player0Score = 0;
+  player1Score = 0;
+  roundPlayed = false;
+  document.querySelector(`.player0-score`).textContent = 0;
+  document.querySelector(`.player1-score`).textContent = 0;
+  endScreen.classList.add(`hidden`);
+  gameScreen.classList.remove(`hidden`);
+});

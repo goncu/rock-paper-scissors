@@ -1,1 +1,51 @@
-<script src="script.js"></script>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <script src="script.js" defer></script>
+    <title>Rock-Paper-Scissors</title>
+  </head>
+  <body>
+    <div class="intro-screen">
+      <h1 class="title">Rock-Paper-Scissors</h1>
+      <p class="instruction">
+        Rock beats scissors. Scissors beats paper.Paper beats rock. Reach 5 to
+        win the game.
+      </p>
+      <button class="btn btn-start">Start</button>
+    </div>
+    <div class="game-screen hidden">
+      <div class="scores">
+        <p>You <span class="player0-score">0</span></p>
+        <p>Com <span class="player1-score">0</span></p>
+      </div>
+      <div class="game-buttons">
+        <button class="btn btn-0"><div>R</div></button>
+        <button class="btn btn-1"><div>P</div></button>
+        <button class="btn btn-2"><div>S</div></button>
+      </div>
+
+      <div class="round-result hidden">
+        <p class="round-result-text">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit.
+        </p>
+        <button class="btn btn-ok">Ok</button>
+      </div>
+    </div>
+    <div class="end-screen hidden">
+      <p class="final-result">
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+      </p>
+      <button class="btn btn-again">Play Again</button>
+    </div>
+  </body>
+</html>

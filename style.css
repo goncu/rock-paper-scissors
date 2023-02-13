@@ -1,0 +1,99 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Press Start 2P", cursive;
+  background-color: #000;
+  color: #fff;
+}
+.intro-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 48px;
+  min-height: 100vh;
+}
+.title {
+  font-size: 36px;
+}
+.instruction {
+  max-width: 50vh;
+  line-height: 1.7;
+}
+.btn {
+  font-size: 24px;
+  font-family: "Press Start 2P", cursive;
+  border: 2px solid #fff;
+  background-color: #000;
+  color: #fff;
+  padding: 16px 16px;
+  border-radius: 15%;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+.btn:hover {
+  background-color: #fff;
+  color: #000;
+  border: 2px solid #000;
+}
+.game-screen {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: start;
+  align-items: center;
+  gap: 10vh;
+}
+.scores {
+  margin-top: 100px;
+  display: flex;
+  gap: 20vh;
+}
+.scores p {
+  font-size: 52px;
+  line-height: 1.5;
+}
+.player0-score,
+.player1-score {
+  display: block;
+  text-align: center;
+}
+.game-buttons {
+  display: flex;
+  gap: 5vh;
+}
+.btn-0,
+.btn-1,
+.btn-2 {
+  font-size: 42px;
+}
+.round-result {
+  margin-top: 5vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3vh;
+}
+
+.end-screen {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  gap: 10vh;
+}
+.final-result {
+  font-size: 42px;
+  max-width: 75vh;
+  text-align: center;
+  line-height: 1.7;
+}
+
+.hidden {
+  display: none;
+}
