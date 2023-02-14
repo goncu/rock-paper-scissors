@@ -56,8 +56,8 @@ body {
   font-size: 52px;
   line-height: 1.5;
 }
-.player0-score,
-.player1-score {
+.player-score,
+.computer-score {
   display: block;
   text-align: center;
 }
